@@ -1,16 +1,22 @@
 import React, { useState } from "react";
-import { withFormik, Form, Field } from "formik";
+import { withFormik, Form} from "formik";
 
 
-function search() {
+function App() {
+  const [searchy, setSearchy] = useState('');
   return (
+    <div>
     <Form>
     <label>
-      Search:
-      <Field type="text" name="search" />
+
+      Search: <input onChange={evt => setSearchy(evt.target.value)} type="text" name="search" />
+       
     </label>
     <button>Submit!</button>
     </Form>
+
+ </div>
+
   );
 }
 
@@ -28,4 +34,4 @@ export const SearchForm = withFormik({
     //THIS IS WHERE YOU DO YOUR FORM SUBMISSION CODE... HTTP REQUESTS, ETC.
   }
 
-})(search);
+})(App);

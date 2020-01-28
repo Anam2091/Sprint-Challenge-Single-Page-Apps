@@ -12,15 +12,33 @@ export default function CharacterList() {
         console.log(response)
         setdata(response.data.results);
       })
+      
     
     // TODO: Add API Request here - must run in `useEffect`
     //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
   }, []);
+  const handleSearchChange = event => {
+    console.log(event.target.value)
+    const searchdata = data.filter(function(filtering){
+      console.log(filtering)
+      return filtering.name.includes(event.target.value)
 
+    })
+    if(searchdata.length > 0){
+      setdata(searchdata);
+
+    }
+   
+  };
   return (
     
     <section className="character-list">
-      <SearchForm/>````
+      
+      <label>
+          search:
+          <input type="text" onChange={event => handleSearchChange(event)} />
+        </label>
+        
         {
         data.map(function(sprint){
           return <CharacterCard sprinty={sprint}/>
