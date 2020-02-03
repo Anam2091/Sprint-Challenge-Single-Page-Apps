@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
-import CharacterCard from './CharacterCard'
+import CharacterCard from './CharacterCard';
 import {SearchForm} from "./SearchForm";
+import {Wrapper} from './Styles';
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
@@ -41,7 +42,7 @@ export default function CharacterList() {
         
         {
         data.map(function(sprint){
-          return <CharacterCard sprinty={sprint}/>
+          return <Wrapper><CharacterCard sprinty={sprint}/> </Wrapper>
         })
         }
         
