@@ -1,10 +1,37 @@
 import React, { useState } from "react";
+import { withFormik, Form} from "formik";
 
-export default function SearchForm() {
- 
+
+function App() {
+  const [searchy, setSearchy] = useState('');
   return (
-    <section className="search-form">
-     // Add a search form here
-    </section>
+    <div>
+    <Form>
+    <label>
+
+      Search: <input onChange={evt => setSearchy(evt.target.value)} type="text" name="search" />
+       
+    </label>
+    <button>Submit!</button>
+    </Form>
+
+ </div>
+
   );
 }
+
+
+export const SearchForm = withFormik({
+
+  mapPropsToValues({ search }) {
+    return {
+      search: search || "",
+    };
+  },
+
+  handleSubmit(values) {
+    console.log(values)
+    //THIS IS WHERE YOU DO YOUR FORM SUBMISSION CODE... HTTP REQUESTS, ETC.
+  }
+
+})(App);
